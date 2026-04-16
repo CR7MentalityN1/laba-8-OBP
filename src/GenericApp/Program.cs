@@ -1,31 +1,15 @@
-﻿// ========== ПЛОХОЙ КОД (БЕЗ GENERICS) ==========
-// Класс только для int
-class IntStorage
+﻿// ========== РЕШЕНИЕ С GENERICS ==========
+// Один универсальный класс для любого типа!
+class Storage<T>
 {
-    private int value;
+    private T value;
     
-    public void SetValue(int val)
+    public void SetValue(T val)
     {
         value = val;
     }
     
-    public int GetValue()
-    {
-        return value;
-    }
-}
-
-// Класс только для string (дублирование кода!)
-class StringStorage
-{
-    private string value;
-    
-    public void SetValue(string val)
-    {
-        value = val;
-    }
-    
-    public string GetValue()
+    public T GetValue()
     {
         return value;
     }
@@ -36,13 +20,18 @@ class Program
     static void Main(string[] args)
     {
         // Работа с int
-        IntStorage intStorage = new IntStorage();
+        Storage<int> intStorage = new Storage<int>();
         intStorage.SetValue(42);
         Console.WriteLine($"Int: {intStorage.GetValue()}");
         
-        // Работа с string
-        StringStorage stringStorage = new StringStorage();
-        stringStorage.SetValue("Hello");
-        Console.WriteLine($"String: {stringStorage.GetValue()}");
+        // Работа с string (тот же класс!)
+        Storage<string> strStorage = new Storage<string>();
+        strStorage.SetValue("Hello");
+        Console.WriteLine($"String: {strStorage.GetValue()}");
+        
+        // Работа с double (легко добавить!)
+        Storage<double> doubleStorage = new Storage<double>();
+        doubleStorage.SetValue(3.14);
+        Console.WriteLine($"Double: {doubleStorage.GetValue()}");
     }
 }

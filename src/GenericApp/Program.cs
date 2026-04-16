@@ -1,37 +1,34 @@
-﻿// ========== РЕШЕНИЕ С GENERICS ==========
-// Один универсальный класс для любого типа!
+﻿using System;
+
 class Storage<T>
 {
     private T value;
-    
-    public void SetValue(T val)
-    {
-        value = val;
-    }
-    
-    public T GetValue()
-    {
-        return value;
-    }
+    public void SetValue(T val) { value = val; }
+    public T GetValue() { return value; }
 }
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Работа с int
-        Storage<int> intStorage = new Storage<int>();
-        intStorage.SetValue(42);
-        Console.WriteLine($"Int: {intStorage.GetValue()}");
+        // Тестируем Swap
+        int x = 10, y = 20;
+        Console.WriteLine($"До обмена: x = {x}, y = {y}");
+        Helper.Swap(ref x, ref y);
+        Console.WriteLine($"После обмена: x = {x}, y = {y}");
         
-        // Работа с string (тот же класс!)
-        Storage<string> strStorage = new Storage<string>();
-        strStorage.SetValue("Hello");
-        Console.WriteLine($"String: {strStorage.GetValue()}");
+        string str1 = "Hello", str2 = "World";
+        Console.WriteLine($"\nДо обмена: str1 = {str1}, str2 = {str2}");
+        Helper.Swap(ref str1, ref str2);
+        Console.WriteLine($"После обмена: str1 = {str1}, str2 = {str2}");
         
-        // Работа с double (легко добавить!)
-        Storage<double> doubleStorage = new Storage<double>();
-        doubleStorage.SetValue(3.14);
-        Console.WriteLine($"Double: {doubleStorage.GetValue()}");
+        // Тестируем PrintArray
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        Console.Write("\nМассив чисел: ");
+        Helper.PrintArray(numbers);
+        
+        string[] words = { "C#", "Generics", "ООП" };
+        Console.Write("Массив строк: ");
+        Helper.PrintArray(words);
     }
 }

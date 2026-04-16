@@ -3,12 +3,13 @@ using System;
 // Модель пользователя
 public class User
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public int Age { get; set; }
     
     public override string ToString()
     {
-        return $"Пользователь: {Name}, Возраст: {Age}";
+        return $"User: Id = {Id}, Name = {Name}, Age = {Age}";
     }
 }
 
